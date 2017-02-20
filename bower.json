@@ -4,7 +4,7 @@
     "JASON TEH <jason.teh@marklogic.com>"
   ],
   "description": "link file upload",
-  "main": "directive.js",
+  "main": "link-file-upload.js",
   "license": "MIT",
   "homepage": "",
   "ignore": [
