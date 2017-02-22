@@ -1,0 +1,35 @@
+<div class="file-upload">
+	<p class="text" ng-if="!ctrl.showUpload">
+		<a href="#{{ctrl.parentId}}" ng-click="ctrl.showUpload = true">{{ctrl.text}}</a>
+	</p>
+	<p class="text" ng-if="ctrl.showUpload">{{ctrl.text}}</p>
+
+	<div ng-if="ctrl.showUpload">
+		<fieldset class="inline">
+			<form name="fileUploadForm">
+				<div class="form-group" ng-class="{'error':ctrl.fileTypeError}" >
+					<span class="error-message" ng-if="ctrl.fileTypeError">The type of file selected is not permitted for upload</span>	
+					<label class="form-label" ng-if="ctrl.showComment">File</label> 
+					<input class="form-control button-line" id="{{ctrl.id}}-document" type="text" ng-model="ctrl.filename" ng-readonly="true" />
+					<button class="button" ngf-select="" ngf-change="fileChanged($files)" accept="{{ctrl.acceptedFileTypes}}">Browse</button>
+				</div>
+
+				<div class="form-group" ng-if="ctrl.isfileCategorySpecifiable">
+					<label class="form-label">File Category</label> 
+					<select	class="form-control" id="{{ctrl.id}}-category"
+						ng-model="ctrl.fileCategory"
+						ng-options="category.value as category.label for category in ctrl.fileCategories()" />
+				</div>
+
+				<div class="form-group">
+					<label class="form-label">File Description</label> 
+					<input	class="form-control" id="{{ctrl.id}}-description" type="text" ng-model="ctrl.fileDescription" />
+				</div>
+				<div class="form-group"> 
+					<button class="button" ng-disabled="ctrl.invalidForm()" ng-click="ctrl.upload()">Upload file</button>
+					<button class="button" ng-click="ctrl.showUpload = false">Cancel</button>
+				</div>
+			</form>
+		</fieldset>
+	</div>
+</div>
