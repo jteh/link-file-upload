@@ -1,6 +1,7 @@
 angular.module('ukgovupload', []);
 angular.module('ukgovupload').directive('linkFileUpload', ['loadResourcesSrv', function (loadResourcesSrv) {
     'use strict';
+//tag v1.0.0
     return {
     	scope: {
     		endpoint: '=',
